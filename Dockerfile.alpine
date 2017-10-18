@@ -1,0 +1,8 @@
+FROM python:{python_version}-alpine
+
+MAINTAINER Darwin Monroy <contact@darwinmonroy.com>
+
+RUN apk add --update \
+    g++ \
+  && pip install numpy=={numpy_version} \
+  && rm -rf /var/cache/apk/*
