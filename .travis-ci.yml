@@ -1,0 +1,15 @@
+sudo: required
+
+services:
+    - docker
+
+
+env:
+    - PYTHON_VERSION=3.6 NUMPY_VERSION=1.13.3
+    - PYTHON_VERSION=3.6 NUMPY_VERSION=1.12.1
+    - PYTHON_VERSION=3.6 NUMPY_VERSION=1.11.3
+
+script:
+    - IMAGE_NAME="dmonroy/numpy:${PYTHON_VERSION}-${NUMPY_VERSION}"
+    - docker build -t $IMAGE_NAME dockerfiles/${PYTHON_VERSION}/${NUMPY_VERSION}
+    - docker push $IMAGE_NAME
