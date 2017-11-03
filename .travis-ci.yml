@@ -3,6 +3,7 @@ sudo: required
 services:
     - docker
 
+language: c
 
 env:
     - PYTHON_VERSION=3.6 NUMPY_VERSION=1.13.3
