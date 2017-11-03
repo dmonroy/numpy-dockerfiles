@@ -11,9 +11,7 @@ PYTHON_VERSIONS = [
 ]
 
 NUMPY_VERSIONS = [
-    '1.13.3',
-    '1.12.1',
-    '1.11.3',
+    '1.13.3'
 ]
 
 
