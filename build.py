@@ -36,7 +36,7 @@ def render_travis():
                 )
             )
 
-    with open('.travis.template') as f:
+    with open('templates/.travis.template') as f:
         template = f.read()
 
     with open('.travis.yml', 'w') as f:
@@ -61,7 +61,7 @@ def render_dockerfiles():
             render_dockerfile(**locals())
 
 def render_dockerfile(**kwargs):
-    with open('Dockerfile.alpine') as f:
+    with open('templates/Dockerfile.alpine') as f:
         template = f.read()
 
     path = 'dockerfiles/{python_version}/{numpy_minor_version}'.format(**kwargs)
