@@ -9,7 +9,7 @@ env:
 {environments}
 
 script:
-    - IMAGE_NAME="dmonroy/numpy:${{PYTHON_VERSION}}-${{NUMPY_VERSION}}"
+    - IMAGE_NAME="dmonroy/numpy:py${{PYTHON_VERSION}}-${{NUMPY_VERSION}}"
     - docker build -t $IMAGE_NAME dockerfiles/${{PYTHON_VERSION}}/${{NUMPY_VERSION}}
 
 after_success:
