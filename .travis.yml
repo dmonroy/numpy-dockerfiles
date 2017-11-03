@@ -13,4 +13,9 @@ env:
 script:
     - IMAGE_NAME="dmonroy/numpy:${PYTHON_VERSION}-${NUMPY_VERSION}"
     - docker build -t $IMAGE_NAME dockerfiles/${PYTHON_VERSION}/${NUMPY_VERSION}
-    - docker push $IMAGE_NAME
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push $IMAGE_NAME;
+    fi
