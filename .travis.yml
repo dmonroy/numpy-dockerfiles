@@ -15,7 +15,8 @@ env:
     - PYTHON_VERSION=2.7 NUMPY_VERSION=1.13
 
 script:
-    - IMAGE_NAME="dmonroy/numpy:${PYTHON_VERSION}-${NUMPY_VERSION}"
+    - IMAGE_NAME="dmonroy/numpy:py${PYTHON_VERSION}-${NUMPY_VERSION}"
+    - docker pull $IMAGE_NAME || echo "image name not found"
     - docker build -t $IMAGE_NAME dockerfiles/${PYTHON_VERSION}/${NUMPY_VERSION}
 
 after_success:
