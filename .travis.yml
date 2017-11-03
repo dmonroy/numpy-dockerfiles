@@ -16,11 +16,13 @@ env:
 
 script:
     - IMAGE_NAME="dmonroy/numpy:py${PYTHON_VERSION}-${NUMPY_VERSION}"
+    - IMAGE_NAME_PYTHON="dmonroy/numpy:py${PYTHON_VERSION}"
     - docker pull $IMAGE_NAME || echo "image name not found"
-    - docker build -t $IMAGE_NAME dockerfiles/${PYTHON_VERSION}/${NUMPY_VERSION}
+    - docker build -t $IMAGE_NAME -t $IMAGE_NAME_PYTHON dockerfiles/${PYTHON_VERSION}/${NUMPY_VERSION}
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
     docker push $IMAGE_NAME;
+    docker push $IMAGE_NAME_PYTHON;
     fi
